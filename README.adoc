@@ -4,7 +4,7 @@ TwitterでつぶやくことでGoogleSpreadSheetの値を更新する。
 
 == Twitter上での使い方
 
-以下のようにつぶやく。
+以下のようにつぶやく。ただしjiro_saburomaruの発言でしかアプリは反応しない。
 
 [source]
 ----
