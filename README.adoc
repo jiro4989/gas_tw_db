@@ -1,0 +1,62 @@
+= gas_tw_db
+
+TwitterでつぶやくことでGoogleSpreadSheetの値を更新する。
+
+== Twitter上での使い方
+
+以下のようにつぶやく。
+
+[source]
+----
+@jiro_saburomaru chname 任意の文字列
+----
+
+5分後には、プロジェクトのスプレッドシートのセルの値が更新されている。
+
+== 手順
+
+久しぶりにTwitetrアプリ作ろうとしたら、少し手順が変わっていたのでメモる。
+
+基本的には https://github.com/jiro4989/own-weather[own-weather] の手順でよいが
+TwitterアプリページにCallback URLの指定が必須になった。
+
+=== コールバックURLの設定
+
+GoogleAppsScriptからTwitterAPIを利用するには、以降の手順を踏む必要がある。
+
+. GoogleSpreadSheetを作成する
+. メニュー -> ツール -> スクリプトエディタを開く
+. メニュー -> ファイル -> プロジェクトのプロパティを開く
+. 情報タブの「スクリプトID」の値をコピー
+. コピーしたスクリプトIDを以下のURLに埋め込んで、再度コピー
+.. `https://script.google.com/macros/d/{ここにスクリプトID}/usercallback`
+. https://developer.twitter.com/en/apps[Twitter開発者ページ]を開く
+. 作成したアプリの Details ボタンをクリック
+. Edit ボタンから Edit details をクリック
+. Callback URLに前述の手順でコピーしたURLを貼り付ける
+. Save ボタンで保存する
+
+=== Auth認証の実行
+
+. GASのスクリプトエディタの画面にて、twitter.gsを開く
+. 画面上部の「関数を選択」のプルダウンにて、authorize関数を選択して実行
+. メニュー -> 表示 -> ログを選択
+. ログに記録されているURLをブラウザで開く
+. 認証をOKする
+
+これでTwitterAPIを利用できるようになるはず。
+
+== プロジェクトのプロパティ
+
+[options="header"]
+|=======================
+|プロパティ|説明
+|TWITTER_USER_ID|TwitterのユーザID
+|TWITTER_API_KEY|Twitterアプリページのキー
+|TWITTER_API_SECRET|Twitterアプリページのシークレットキー
+|=======================
+
+== 参考
+
+* https://moripro.net/gas-twitter-bot/[Google Apps ScriptでTwitterに投稿するスクリプト（GAS×TwitterBot④）]
+
