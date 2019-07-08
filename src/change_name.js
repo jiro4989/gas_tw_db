@@ -12,7 +12,7 @@ function changeName() {
   
   // セルに埋め込む値のみ取得
   var mention = mentionList[0].text;
-  var nameRegex = /^@[^\s]+\schname\s+([^\s]+)/;
+  var nameRegex = /^@[^\s]+\schname\s+([^\s]+)\s+.*/;
   var name = mention.replace(nameRegex, '$1');
   
   // セルに値を埋め込む
@@ -20,7 +20,7 @@ function changeName() {
   var sheet = SpreadsheetApp.getActiveSheet();
   var befName = sheet.getRange('B1').getValue();  
   sheet.getRange('B1').setValue(name);
-  sheet.getRange('B2').setValue(befName);
+//  sheet.getRange('B2').setValue(befName);
 }
 
 // 名前変更を実行するのに適当なつぶやきであるかの判定どデータフィルタを実施する。
